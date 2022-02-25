@@ -1,0 +1,19 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0
+jobs:
+  checkoutAndTest:
+    docker:
+      - image: cimg/node:17.4.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test
+
+workflows:
+  build:
+    jobs:
+      - checkoutAndTest:
+          filters:
+            branches:
+              only: master
