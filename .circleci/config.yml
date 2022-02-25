@@ -1,23 +1,22 @@
 version: 2.1
-orbs:
-  eb: circleci/aws-elastic-beanstalk@2.0.1
-  node: circleci/node@5.0.0
+
 jobs:
   checkoutAndTest:
     docker:
       - image: cimg/node:17.4.0
     steps:
       - checkout
-      - node/test
-    
+      - run: npm install
+      - run: npm run test
   integrateFrontend:
     docker:
-       - image: cimg/node:17.4.0
+      - image: cimg/node:17.4.0
     steps:
       - run: git clone https://github.com/DylanTardif/3w5-h22-tp2-frontend
-      -
-      -
-
+      - run: git clone https://github.com/DylanTardif/3w5-h22-tp2-backend
+      - run: ls -al
+   
+          
 workflows:
   build:
     jobs:
