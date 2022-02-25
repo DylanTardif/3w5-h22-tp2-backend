@@ -24,3 +24,9 @@ workflows:
           filters:
             branches:
               only: main
+      - integrateFrontend:
+          filters:
+            branches:
+              only: main
+          requires:
+            - checkoutAndTest
