@@ -15,4 +15,4 @@ workflows:
       - checkoutAndTest:
           filters:
             branches:
-              only: master
+              only: main
